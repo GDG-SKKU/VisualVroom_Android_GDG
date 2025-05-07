@@ -106,7 +106,6 @@
             android:layout_height="80dp"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/group_16"
             android:clickable="true"
             android:focusable="true"
