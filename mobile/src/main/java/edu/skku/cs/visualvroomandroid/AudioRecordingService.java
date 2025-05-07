@@ -398,6 +398,7 @@ public class AudioRecordingService extends Service {
 
                             // Broadcast result to activity
                             Intent intent = new Intent("AUDIO_INFERENCE_RESULT");
+                            intent.setPackage(getPackageName());
                             intent.putExtra("result", result);
                             sendBroadcast(intent);
                         }

@@ -16,8 +16,10 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-
+        wearAppUnbundled = true
     }
+
+
 
     buildTypes {
         release {
@@ -59,7 +61,6 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
 
     implementation("androidx.core:core-ktx:1.12.0") // Instead of 1.15.0
-    implementation("androidx.core:core:1.12.0") // Instead of 1.15.0
 
     implementation("androidx.wear:wear:1.2.0")
 
