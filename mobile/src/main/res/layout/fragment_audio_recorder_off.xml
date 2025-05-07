@@ -85,19 +85,19 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/vehicleAnimation"
-            android:layout_marginBottom="35dp"
-            />
+            android:layout_marginBottom="35dp"/>
 
         <ImageView
             android:id="@+id/centerIcon"
             android:layout_width="349dp"
             android:layout_height="299dp"
             android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
             app:layout_constraintBottom_toTopOf="@id/micButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/statusText"
-            app:srcCompat="@drawable/frame_1__1_"
+            app:srcCompat="@drawable/frame_1"
             android:layout_marginBottom="24dp"/>
 
         <com.airbnb.lottie.LottieAnimationView
@@ -107,7 +107,8 @@
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/group_16"
+            android:src="@drawable/group_15"
+            app:srcCompat="@drawable/recording_button_selector"
             android:clickable="true"
             android:focusable="true"
             app:layout_constraintHorizontal_bias="0.498"
