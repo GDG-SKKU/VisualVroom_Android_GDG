@@ -59,10 +59,22 @@
         android:id="@+id/buttonContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_margin="8dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent">
-        <!-- ... -->
+
+        <!--         Vibrate Watch Button -->
+        <!--        <com.google.android.material.button.MaterialButton-->
+        <!--            android:id="@+id/vibrateWatchButton"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="4dp"-->
+        <!--            android:text="VIBRATE WATCH"-->
+        <!--            android:textSize="16sp"-->
+        <!--            android:paddingTop="12dp"-->
+        <!--            android:paddingBottom="12dp"-->
+        <!--            app:backgroundTint="#E91E63" />-->
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

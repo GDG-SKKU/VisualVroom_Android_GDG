@@ -391,7 +391,7 @@ public class SpeechToTextFragment extends Fragment {
                     showToast("Image generated successfully");
 
                     // Optionally save to local storage
-                    saveImageToDevice(bitmap);
+                    // saveImageToDevice(bitmap);
                 } else {
                     Log.e(TAG, "Failed to decode bitmap from base64 string");
                     showToast("Could not decode image");
