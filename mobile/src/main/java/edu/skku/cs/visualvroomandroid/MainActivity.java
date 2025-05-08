@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                             tabText.setText("Audio Recorder");
                             break;
                         case 1:
-                            tabText.setText("Speech to Text");
+                            tabText.setText("Transcribe & Sign");
                             break;
                     }
 
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                             tabText.setText("Audio Recorder");
                             break;
                         case 1:
-                            tabText.setText("Speech to Text");
+                            tabText.setText("Transcribe & Sign");
                             break;
                     }
 
