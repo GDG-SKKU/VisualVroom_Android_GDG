@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- 선택된 상태 -->
-    <item android:color="@color/purple_500" android:state_selected="true"/>
+    <item android:color="@color/purple_custom" android:state_selected="true"/>
     <!-- 기본(비선택) -->
-    <item android:color="@color/purple_200"/>
+    <item android:color="@color/purple_custom"/>
 </selector>

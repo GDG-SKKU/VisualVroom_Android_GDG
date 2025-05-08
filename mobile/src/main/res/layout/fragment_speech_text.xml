@@ -1,83 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:padding="16dp">
 
-    <!-- 1. TabLayout -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/textCard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintBottom_toTopOf="@id/imageCard"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <!-- 2. 설명 텍스트 -->
-    <TextView
-        android:id="@+id/descriptionText"
-        android:layout_width="0dp"
+        <EditText
+            android:id="@+id/transcribedText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:gravity="top|start"
+            android:hint="Start speaking or type here..."
+            android:importantForAutofill="no"
+            android:inputType="textMultiLine"
+            android:padding="16dp"
+            android:textSize="16sp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Image Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/imageCard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toTopOf="@id/buttonContainer"
+        app:layout_constraintTop_toBottomOf="@id/textCard">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/generatedImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:contentDescription="Generated image"
+                android:visibility="gone" />
+
+            <ProgressBar
+                android:id="@+id/loadingIndicator"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/placeholderText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Image will appear here"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16sp" />
+        </FrameLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Convert speech to text &amp; sign"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="180dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    />
+        <ImageButton
+            android:id="@+id/clearButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Clear text"
+            android:src="@drawable/ic_clear" />
 
-    <!-- 3. concentric circles + FAB -->
-
-    <FrameLayout
-        android:id="@+id/micContainer"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <!-- 밖에서 안으로: 회색 원 → 연한 회색 원 → 보라색 원 -->
-        <View
-            android:layout_width="240dp"
-            android:layout_height="240dp"
-            android:background="@drawable/circle_outer"/>
-
-        <View
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_gravity="center"
-            android:background="@drawable/circle_middle"/>
-
-        <View
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_gravity="center"
-            android:background="@drawable/circle_inner"/>
-
-        <ImageView
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/micButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_mic"
-            android:layout_gravity="center"
-            app:tint="@color/white" />
+            android:contentDescription="Start/Stop recording"
+            app:fabSize="normal"
+            app:srcCompat="@drawable/ic_mic" />
 
+        <ImageButton
+            android:id="@+id/copyButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Copy text"
+            android:src="@drawable/ic_copy" />
 
-    </FrameLayout>
-
-    <!-- 4. 힌트 텍스트 -->
-    <TextView
-        android:id="@+id/hintText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="Press the button to start"
-        android:textColor="@color/purple_200"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/micContainer" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
