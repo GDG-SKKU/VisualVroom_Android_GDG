@@ -10,9 +10,14 @@ import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -95,16 +100,68 @@ public class MainActivity extends AppCompatActivity {
         // Connect TabLayout with ViewPager2
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> {
+                    View customTabView = LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+                    TextView tabText = customTabView.findViewById(R.id.tabText);
+
                     switch (position) {
                         case 0:
-                            tab.setText("Audio Recorder");
+                            tabText.setText("Audio Recorder");
                             break;
                         case 1:
-                            tab.setText("Speech to Text");
+                            tabText.setText("Speech to Text");
                             break;
                     }
+
+                    tab.setCustomView(customTabView);
                 }
         ).attach();
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                setTabBackground(tab, true);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                setTabBackground(tab, false);
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
+        });
+
+        new TabLayoutMediator(tabLayout, viewPager,
+                (tab, position) -> {
+                    View customTabView = LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+                    TextView tabText = customTabView.findViewById(R.id.tabText);
+
+                    switch (position) {
+                        case 0:
+                            tabText.setText("Audio Recorder");
+                            break;
+                        case 1:
+                            tabText.setText("Speech to Text");
+                            break;
+                    }
+
+                    tab.setCustomView(customTabView);
+                }
+        ).attach();
+
+// 초기 상태 설정 (첫 번째 탭 선택)
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            TabLayout.Tab firstTab = tabLayout.getTabAt(0);
+            TabLayout.Tab secondTab = tabLayout.getTabAt(1);
+            if (firstTab != null) {
+                setTabBackground(firstTab, true); // 첫 번째 탭 선택
+            }
+            if (secondTab != null) {
+                setTabBackground(secondTab, false); // 두 번째 탭 선택되지 않음
+            }
+        }, 100);
+
+
 
         // Register broadcast receiver
         messageReceiver = new BroadcastReceiver() {
@@ -129,6 +186,23 @@ public class MainActivity extends AppCompatActivity {
         // Check permissions before starting any services
         checkAndRequestPermissions();
     }
+
+    private void setTabBackground(TabLayout.Tab tab, boolean isSelected) {
+        View view = tab.getCustomView();
+        if (view != null) {
+            TextView tabText = view.findViewById(R.id.tabText);
+            if (isSelected) {
+                tabText.setTextColor(ContextCompat.getColor(this, android.R.color.white));
+                view.setBackground(ContextCompat.getDrawable(this, R.drawable.tab_background));
+            } else {
+                tabText.setTextColor(ContextCompat.getColor(this, R.color.purple_custom));
+                view.setBackground(ContextCompat.getDrawable(this, R.drawable.tab_unselected_background));
+            }
+        }
+    }
+
+
+
 
     private class ViewPagerAdapter extends FragmentStateAdapter {
         public ViewPagerAdapter(FragmentActivity activity) {

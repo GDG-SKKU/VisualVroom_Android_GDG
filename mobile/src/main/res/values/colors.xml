@@ -7,4 +7,9 @@
     <color name="purple_500">#6C5CE7</color>
     <color name="purple_200">#A29BFE</color>
     <color name="light_gray">#F2F2F2</color>
+    <color name="purple_300">#B39DDB</color>
+    <color name="purple_custom">#9087E5</color>
+
+    <color name="gray">#B0B0B0</color>
+
 </resources>
