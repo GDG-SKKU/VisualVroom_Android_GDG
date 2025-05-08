@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    >
+
+
+    <!-- 1. Transcription 텍스트 영역 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardTranscript"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="120dp"
+        app:cardCornerRadius="12dp"
+        app:cardBackgroundColor="@color/light_gray"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/textTranscript"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:text="여기에 변환된 텍스트가 표시됩니다."/>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+    <!-- 2. 수화 그림 영역 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardSignLanguage"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="12dp"
+        app:cardBackgroundColor="@color/light_gray"
+        app:layout_constraintTop_toBottomOf="@id/cardTranscript"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/imageSignLanguage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/sign_language_image"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_placeholder_sign" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- 3. Go back 버튼 -->
+    <Button
+        android:id="@+id/btnGoBack"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Go back"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/purple_500"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/cardSignLanguage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

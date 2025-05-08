@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">VisualVroom</string>
+    <string name="sign_language_image">Sign language illustration</string>
 </resources>
