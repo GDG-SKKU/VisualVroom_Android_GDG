@@ -47,8 +47,8 @@
 <!--            android:layout_height="240dp"-->
 <!--            android:indeterminate="true"-->
 <!--            android:layout_gravity="center"-->
-<!--            app:indeterminateTint="@color/purple_300"-->
-<!--            app:indeterminateTintMode="src_in" />-->
+<!--            android:indeterminateTint="@color/purple_300"-->
+<!--            android:indeterminateTintMode="src_in" />-->
 
 <!--        &lt;!&ndash; 중간 원 &ndash;&gt;-->
 <!--        <View-->
