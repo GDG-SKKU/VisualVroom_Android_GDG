@@ -136,3 +136,4 @@ Different patterns are used based on the vehicle type:
 - Check that the device has a stereo microphone
 - Position the phone with clear line of sight to potential sound sources
 - Increase volume or adjust the phone position if sounds are too quiet
+  

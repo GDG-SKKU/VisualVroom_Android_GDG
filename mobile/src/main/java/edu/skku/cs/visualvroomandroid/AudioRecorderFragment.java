@@ -14,16 +14,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.airbnb.lottie.LottieAnimationView;
-import com.airbnb.lottie.LottieDrawable;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class AudioRecorderFragment extends Fragment {
     private static final String TAG = "AudioRecorderFragment";
     private static final int PROCESSING_INTERVAL_MS = 3000; // 3 seconds
 
     // UI Components
-    private LottieAnimationView micButton;
+    private ImageButton micButton;
+    private ImageView background;
     private TextView statusText;
-    private LottieAnimationView recordingAnimation;
     private LottieAnimationView vehicleAnimation;
     private View leftDirectionPanel;
     private View rightDirectionPanel;
@@ -56,7 +57,7 @@ public class AudioRecorderFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_audio_recorder, container, false);
+        return inflater.inflate(R.layout.fragment_audio_recorder_off, container, false);
     }
 
     @Override
@@ -69,8 +70,8 @@ public class AudioRecorderFragment extends Fragment {
 
     private void initializeViews(View view) {
         micButton = view.findViewById(R.id.micButton);
+        background = view.findViewById(R.id.centerIcon);
         statusText = view.findViewById(R.id.statusText);
-        recordingAnimation = view.findViewById(R.id.recordingAnimation);
         vehicleAnimation = view.findViewById(R.id.vehicleAnimation);
         leftDirectionPanel = view.findViewById(R.id.leftDirectionPanel);
         rightDirectionPanel = view.findViewById(R.id.rightDirectionPanel);
@@ -440,26 +441,22 @@ public class AudioRecorderFragment extends Fragment {
         switch (newState) {
             case IDLE:
                 // Stop the mic animation when idle
-                micButton.pauseAnimation();
-                micButton.setProgress(0); // Reset to first frame
+                micButton.setImageResource(R.drawable.group_15);
+                background.setImageResource(R.drawable.frame_1);
                 micButton.setEnabled(true);
 
                 // Update other UI elements
                 statusText.setText("Ready to record");
-                recordingAnimation.cancelAnimation();
-                recordingAnimation.setVisibility(View.GONE);
                 break;
 
             case RECORDING:
                 // Start the mic animation when recording
-                micButton.playAnimation();
+                micButton.setImageResource(R.drawable.group_16);
+                background.setImageResource(R.drawable.frame_1__1_);
                 micButton.setEnabled(true);
 
                 // Update other UI elements
                 statusText.setText("Recording...");
-                recordingAnimation.setVisibility(View.VISIBLE);
-                recordingAnimation.setAnimation(R.raw.recording_animation);
-                recordingAnimation.playAnimation();
                 break;
 
             case PROCESSING:
@@ -468,8 +465,6 @@ public class AudioRecorderFragment extends Fragment {
 
                 // Update other UI elements
                 statusText.setText("Processing...");
-                recordingAnimation.cancelAnimation();
-                recordingAnimation.setVisibility(View.GONE);
                 break;
         }
     }
@@ -496,16 +491,10 @@ public class AudioRecorderFragment extends Fragment {
             audioRecorder.stopRecording();
         }
 
-        // Clean up animations
-        if (recordingAnimation != null) {
-            recordingAnimation.cancelAnimation();
-        }
         if (vehicleAnimation != null) {
             vehicleAnimation.cancelAnimation();
         }
-        if (micButton != null) {
-            micButton.cancelAnimation();
-        }
+
 
         // Reset direction panels
         if (leftDirectionPanel != null) {
