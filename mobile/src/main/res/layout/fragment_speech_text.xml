@@ -14,7 +14,7 @@
     android:background="@color/white"
     android:padding="16dp">
 
-    <!-- (1) 설명 텍스트 -->
+    <!-- (1) Description text -->
     <TextView
         android:id="@+id/descriptionText"
         android:layout_width="0dp"
@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- (2) 변환된 텍스트 영역 -->
+    <!-- (2) Converted text area -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardTranscript"
         android:layout_width="0dp"
@@ -48,13 +48,13 @@
                 android:id="@+id/transcribedText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="여기에 변환된 텍스트가 표시됩니다."
+                android:text="Text will be displayed here."
                 android:textColor="@color/black"
                 android:textSize="16sp"/>
         </ScrollView>
     </androidx.cardview.widget.CardView>
 
-    <!-- (3) 수화 그림 영역 -->
+    <!-- (3) Sign language image area -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardSignLanguage"
         android:layout_width="0dp"
@@ -75,7 +75,7 @@
             android:src="@drawable/ic_placeholder_sign"/>
     </androidx.cardview.widget.CardView>
 
-    <!-- (4) 로딩 인디케이터 (마이크 바로 위) -->
+    <!-- (4) Loading indicator (above the microphone) -->
     <ProgressBar
         android:id="@+id/loadingIndicator"
         style="?android:attr/progressBarStyleLarge"
@@ -87,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="24dp"/>
 
-    <!-- (5) 복사 버튼 (마이크 왼쪽) -->
+    <!-- (5) Copy button (to the left of the microphone) -->
     <ImageButton
         android:id="@+id/copyButton"
         android:layout_width="56dp"
@@ -100,7 +100,7 @@
         app:layout_constraintEnd_toStartOf="@+id/micButton"
         android:layout_marginEnd="32dp"/>
 
-    <!-- (6) 마이크 버튼 (가운데) -->
+    <!-- (6) Microphone button (center) -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/micButton"
         android:layout_width="wrap_content"
@@ -117,7 +117,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- (7) 지우기 버튼 (마이크 오른쪽) -->
+    <!-- (7) Clear button (to the right of the microphone) -->
     <ImageButton
         android:id="@+id/clearButton"
         android:layout_width="56dp"
