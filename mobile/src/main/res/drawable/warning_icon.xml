@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- 선택(selected) 상태일 때 -->
     <item android:state_selected="true"
         android:drawable="@drawable/group_16" />
-    <!-- 기본(default) -->
     <item android:drawable="@drawable/group_15" />
 </selector>
